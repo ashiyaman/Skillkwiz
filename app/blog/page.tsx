@@ -67,9 +67,13 @@ export default function BlogPage() {
                     />
                   </div>
                   <h3 className="text-lg font-bold mb-1">{post.title}</h3>
-                  <p className="text-sm text-[#00418d] font-medium">
+                  <a
+                    href="/downloads/skillkwiz_dummy_blog.pdf"
+                    download
+                    className="text-sm text-[#00418d] font-medium hover:underline"
+                  >
                     {post.subtitle}
-                  </p>
+                  </a>
                 </div>
               ))}
             </div>
