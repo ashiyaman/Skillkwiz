@@ -2,10 +2,17 @@
 
 import { useState } from "react";
 import { Info, Calendar, Clock } from "lucide-react";
+import { Dialog, DialogContent } from "./ui/dialog";
+import { CheckCircle } from "lucide-react";
 
 export default function ScheduleAssessment() {
   const [selectedCompany, setSelectedCompany] = useState<string>("microsoft");
 
+  const [showThankYou, setShowThankYou] = useState<boolean>(false);
+
+  const handleSubmit = () => {
+    setShowThankYou(true);
+  }
   return (
     <div className="text-white">
       <h1 className="text-3xl font-semibold text-center mb-2">
@@ -267,11 +274,34 @@ export default function ScheduleAssessment() {
 
         {/* Submit Button */}
         <div className="flex justify-center mt-8">
-          <button className="px-20 py-2 rounded bg-gradient-to-r from-[#4ECDC4] to-[#2d8a84] text-white hover:opacity-90">
+          <button 
+            onClick = {handleSubmit}
+            className="px-20 py-2 rounded bg-gradient-to-r from-[#4ECDC4] to-[#2d8a84] text-white hover:opacity-90">
             Submit
           </button>
         </div>
       </div>
+
+      {/* Thank You Dialog */}
+      <Dialog open={showThankYou} onOpenChange={setShowThankYou}>
+        <DialogContent className="bg-[#1a1f3d] border border-[#3a4a7b] text-white max-w-md text-center [&>button]:text-white [&>button]:opacity-100 [&>button]:hover:opacity-80">
+          <div className="flex flex-col items-center py-4">
+            <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+              <CheckCircle className="w-9 h-9 text-green-500" />
+            </div>
+            <h2 className="text-2xl font-semibold mb-2">Thank You!</h2>
+            <p className="text-gray-300 mb-6">
+              Your assessment has been successfully scheduled! We&apos;ll send a confirmation email with the details shortly.
+            </p>
+            <button
+              onClick={() => setShowThankYou(false)}
+              className="px-10 py-2 rounded bg-gradient-to-r from-[#4ECDC4] to-[#2d8a84] text-white hover:opacity-90 font-medium"
+            >
+              Close
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
