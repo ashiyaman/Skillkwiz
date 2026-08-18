@@ -17,6 +17,39 @@ export default function EmployerCandidateList() {
     }
   };
 
+  const handleViewReport = (candidate: {
+    name: string;
+    company: string;
+    percentile: number;
+    skills: string[];
+    location: string;
+  }) => {
+    console.log(`View report for candidate with ID: ${candidate.name}`);
+     const reportContent = `SkillKwizz Assessment Report
+===============================
+
+Candidate: ${candidate.name}
+Company: ${candidate.company}
+Location: ${candidate.location}
+
+Skills Assessed: ${candidate.skills.join(", ")}
+Percentile Score: ${candidate.percentile}
+
+This is a sample/dummy report generated for demo purposes.
+`;
+
+    const blob = new Blob([reportContent], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${candidate.name.replace(/\s+/g, "_")}_Report.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
   const candidates = [
     {
       id: 1,
@@ -238,7 +271,9 @@ export default function EmployerCandidateList() {
                     </div>
                   </div>
                 </div>
-                <button className="bg-[#00bcd4] text-white px-4 py-2 rounded-lg hover:bg-[#00a5bb]">
+                <button 
+                  onClick={() => handleViewReport(candidate)}
+                  className="bg-[#00bcd4] text-white px-4 py-2 rounded-lg hover:bg-[#00a5bb]">
                   View Report
                 </button>
               </div>
