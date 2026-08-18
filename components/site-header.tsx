@@ -8,159 +8,210 @@ import { usePathname } from "next/navigation";
 
 export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const pathname = usePathname();
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const isActive = (path: string) => pathname === path;
+
   return (
-    <div className="w-full fixed top-0 left-0 z-50">
-      <nav className="flex flex-col w-full md:w-4/5 lg:w-3/5 xl:w-1/2 mx-auto bg-[#335f92] text-white rounded-b-3xl">
-        <div className="flex justify-between px-4 py-2">
+    <header className="fixed top-0 left-0 w-full z-[100]">
+      <nav className="w-full md:w-[95%] lg:w-[92%] xl:w-[90%] max-w-[1400px] mx-auto bg-[#335f92] text-white rounded-b-3xl shadow-lg">
+        {/* Desktop + Mobile Top Bar */}
+        <div className="flex items-center justify-between min-h-[72px] px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link
             href="/"
-            className={`md:hidden relative group py-4 px-2 text-sm lg:text-base transition-all ${
-              pathname === "/" ? "text-yellow-400 font-semibold" : "text-white"
-            }`}
+            onClick={closeMenu}
+            className="relative flex items-center shrink-0"
+            aria-label="SkillKwiz Home"
           >
-            <div className="relative flex items-center">
-              <div className="w-auto h-10 flex items-center justify-start">
-                <Image
-                  src="/images/skillkwizLogo.svg"
-                  alt="SkillKwiz Logo"
-                  width={100}
-                  height={30}
-                  className="w-auto h-auto max-h-12 object-contain"
-                  style={{ maxWidth: "100%" }}
-                />
-              </div>
+            {/* 
+              The supplied SVG has a 500x500 canvas with whitespace around
+              the actual logo. The wrapper crops that whitespace so the
+              logo remains clearly visible in the header.
+            */}
+            <div className="relative w-[155px] h-[58px] sm:w-[175px] sm:h-[62px] overflow-hidden rounded-md bg-white">
+              <Image
+                src="/images/skillkwizLogo.svg"
+                alt="SkillKwiz - How much do you know?"
+                fill
+                priority
+                sizes="175px"
+                className="object-cover"
+              />
             </div>
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white focus:outline-none z-20"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:justify-center md:flex-1">
+          <div className="hidden md:flex items-center ml-auto">
             <Link
               href="/"
-              className={`relative group py-4 px-2 text-sm lg:text-base md:px-4 transition-all ${
-                pathname === "/"
-                  ? "text-yellow-400 font-semibold"
-                  : "text-white"
-              }`}
-            >
-              <div className="relative flex items-center">
-                <div className="w-auto h-10 flex items-center justify-start">
-                  <Image
-                    src="/images/skillkwizLogo.svg"
-                    alt="SkillKwiz Logo"
-                    width={100}
-                    height={30}
-                    className="w-auto h-auto max-h-12 object-contain"
-                    style={{ maxWidth: "100%" }}
-                  />
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/"
-              className={`relative group py-4 px-2 text-sm md:px-4 lg:text-base transition-all ${
-                pathname === "/"
+              className={`relative group px-4 lg:px-5 py-6 text-sm lg:text-base transition-colors ${
+                isActive("/")
                   ? "text-yellow-400 font-semibold"
                   : "text-white"
               }`}
             >
               <span>Home</span>
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span
+                className={`absolute left-4 right-4 lg:left-5 lg:right-5 bottom-2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transition-transform duration-300 origin-left ${
+                  isActive("/")
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              />
             </Link>
+
             <Link
               href="/about"
-              className={`relative group py-4 px-2 text-sm md:px-4 lg:text-base transition-all ${
-                pathname === "/about"
+              className={`relative group px-4 lg:px-5 py-6 text-sm lg:text-base transition-colors ${
+                isActive("/about")
                   ? "text-yellow-400 font-semibold"
                   : "text-white"
               }`}
             >
               <span>About Us</span>
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span
+                className={`absolute left-4 right-4 lg:left-5 lg:right-5 bottom-2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transition-transform duration-300 origin-left ${
+                  isActive("/about")
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              />
             </Link>
+
             <Link
               href="/services"
-              className={`relative group py-4 px-2 text-sm md:px-4 lg:text-base transition-all ${
-                pathname === "/services"
+              className={`relative group px-4 lg:px-5 py-6 text-sm lg:text-base transition-colors ${
+                isActive("/services")
                   ? "text-yellow-400 font-semibold"
                   : "text-white"
               }`}
             >
               <span>Services</span>
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span
+                className={`absolute left-4 right-4 lg:left-5 lg:right-5 bottom-2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transition-transform duration-300 origin-left ${
+                  isActive("/services")
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              />
             </Link>
+
             <Link
               href="/blog"
-              className={`relative group py-4 px-2 text-sm md:px-4 lg:text-base transition-all ${
-                pathname === "/blog"
+              className={`relative group px-4 lg:px-5 py-6 text-sm lg:text-base transition-colors ${
+                isActive("/blog")
                   ? "text-yellow-400 font-semibold"
                   : "text-white"
               }`}
             >
               <span>Blog</span>
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              <span
+                className={`absolute left-4 right-4 lg:left-5 lg:right-5 bottom-2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transition-transform duration-300 origin-left ${
+                  isActive("/blog")
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              />
+            </Link>
+
+            {/* Signup */}
+            <Link
+              href="/services"
+              className="ml-3 lg:ml-5 px-5 lg:px-6 py-2.5 rounded-full bg-[#f73c5c] text-white text-sm lg:text-base font-semibold shadow-md hover:bg-[#e62f50] hover:scale-[1.03] transition-all duration-200"
+            >
+              Sign Up
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            className="md:hidden flex items-center justify-center text-white p-2 rounded-md hover:bg-white/10 transition-colors"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? (
+              <X className="h-7 w-7" />
+            ) : (
+              <Menu className="h-7 w-7" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden flex flex-col items-center py-4 bg-[#335f92] rounded-b-3xl absolute top-0 left-0 w-full pt-16 shadow-lg transition-all duration-300 ease-in-out">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? "max-h-[500px] opacity-100"
+              : "max-h-0 opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="flex flex-col items-center px-4 pb-5">
             <Link
               href="/"
-              className="text-white relative group py-3 text-lg w-full text-center"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              className={`relative w-full text-center py-3 text-lg transition-colors ${
+                isActive("/")
+                  ? "text-yellow-400 font-semibold"
+                  : "text-white"
+              }`}
             >
-              <span>Home</span>
-              <span className="absolute left-1/4 right-1/4 bottom-0 w-1/2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              Home
             </Link>
+
             <Link
               href="/about"
-              className="text-white relative group py-3 text-lg w-full text-center"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              className={`relative w-full text-center py-3 text-lg transition-colors ${
+                isActive("/about")
+                  ? "text-yellow-400 font-semibold"
+                  : "text-white"
+              }`}
             >
-              <span>About Us</span>
-              <span className="absolute left-1/4 right-1/4 bottom-0 w-1/2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              About Us
             </Link>
+
             <Link
               href="/services"
-              className="text-white relative group py-3 text-lg w-full text-center"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              className={`relative w-full text-center py-3 text-lg transition-colors ${
+                isActive("/services")
+                  ? "text-yellow-400 font-semibold"
+                  : "text-white"
+              }`}
             >
-              <span>Services</span>
-              <span className="absolute left-1/4 right-1/4 bottom-0 w-1/2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              Services
             </Link>
+
             <Link
               href="/blog"
-              className="text-white relative group py-3 text-lg w-full text-center"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              className={`relative w-full text-center py-3 text-lg transition-colors ${
+                isActive("/blog")
+                  ? "text-yellow-400 font-semibold"
+                  : "text-white"
+              }`}
             >
-              <span>Blog</span>
-              <span className="absolute left-1/4 right-1/4 bottom-0 w-1/2 h-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              Blog
+            </Link>
+
+            {/* Mobile Signup */}
+            <Link
+              href="/services"
+              onClick={closeMenu}
+              className="mt-3 px-8 py-2.5 rounded-full bg-[#f73c5c] text-white font-semibold shadow-md hover:bg-[#e62f50] transition-colors"
+            >
+              Sign Up
             </Link>
           </div>
-        )}
+        </div>
       </nav>
-    </div>
+    </header>
   );
 }
