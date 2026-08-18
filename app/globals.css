@@ -104,3 +104,52 @@ body {
   }
 }
 
+
+@keyframes skillLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotate(-18deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-12deg);
+  }
+}
+
+@keyframes skillLeftBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px) rotate(-12deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-6deg);
+  }
+}
+
+@keyframes skillRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) rotate(15deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(9deg);
+  }
+}
+
+@keyframes skillRightBottom {
+  0% {
+    opacity: 0;
+    transform: translateX(70px) rotate(12deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(6deg);
+  }
+}
+
