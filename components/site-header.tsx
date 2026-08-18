@@ -28,7 +28,7 @@ export default function SiteHeader() {
             <div className="relative flex items-center">
               <div className="w-auto h-10 flex items-center justify-start">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/skillkwizLogo.svg"
                   alt="SkillKwiz Logo"
                   width={100}
                   height={30}
@@ -65,7 +65,7 @@ export default function SiteHeader() {
               <div className="relative flex items-center">
                 <div className="w-auto h-10 flex items-center justify-start">
                   <Image
-                    src="/images/logo.png"
+                    src="/images/skillkwizLogo.svg"
                     alt="SkillKwiz Logo"
                     width={100}
                     height={30}
