@@ -17,7 +17,7 @@ export default function SiteHeader() {
   return (
     <div className="w-full fixed top-0 left-0 z-50">
       <nav className="flex flex-col w-full md:w-4/5 lg:w-3/5 xl:w-1/2 mx-auto bg-[#335f92] text-white rounded-b-3xl">
-        <div className="flex items-center px-4 py-2">
+        <div className="flex justify-between px-4 py-2">
           {/* Logo */}
           <Link
             href="/"
