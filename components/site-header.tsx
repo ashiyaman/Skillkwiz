@@ -119,13 +119,6 @@ export default function SiteHeader() {
               />
             </Link>
 
-            {/* Signup */}
-            <Link
-              href="/services"
-              className="ml-3 lg:ml-5 px-5 lg:px-6 py-2.5 rounded-full bg-[#f73c5c] text-white text-sm lg:text-base font-semibold shadow-md hover:bg-[#e62f50] hover:scale-[1.03] transition-all duration-200"
-            >
-              Sign Up
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -201,14 +194,6 @@ export default function SiteHeader() {
               Blog
             </Link>
 
-            {/* Mobile Signup */}
-            <Link
-              href="/services"
-              onClick={closeMenu}
-              className="mt-3 px-8 py-2.5 rounded-full bg-[#f73c5c] text-white font-semibold shadow-md hover:bg-[#e62f50] transition-colors"
-            >
-              Sign Up
-            </Link>
           </div>
         </div>
       </nav>

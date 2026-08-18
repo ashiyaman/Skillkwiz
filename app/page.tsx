@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
 
         {/* SkillKwiz Tag - Positioned below the call center image */}
-        <div className="relative mt-[65vh]" style={{ zIndex: 3 }}>
+        <div className="relative md:mt-[45vh]" style={{ zIndex: 3 }}>
           <div className="bg-[#f6c648] text-[#00418d] py-4 px-6 inline-block transform skew-x-12 -ml-4">
             <div className="transform -skew-x-12">
               <h2 className="text-xl font-bold">
