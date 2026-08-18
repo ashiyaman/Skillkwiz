@@ -17,25 +17,25 @@ export default function LetterCarousel() {
   const slides: CarouselSlide[] = [
     {
       letters: ["S", "K", "I", "L", "L"],
-      title: "Skill Assessment",
+      title: "Candidate Authentication Eliminating Fraud",
       description: "Evaluate your knowledge with our comprehensive skill tests",
       backgroundImage: "/images/homepage/Carousel/Drivers License.jpg",
     },
     {
       letters: ["Q", "U", "I", "Z"],
-      title: "Quiz Excellence",
+      title: "Say Goodbye to Technical Interviews!",
       description: "Interactive quizzes designed by industry experts",
       backgroundImage: "/images/homepage/Carousel/Pick - Laptop.jpg",
     },
     {
       letters: ["L", "E", "A", "R", "N"],
-      title: "Learning Journey",
+      title: "Assessments in Secure Centers",
       description: "Continuous improvement through personalized feedback",
       backgroundImage: "/images/homepage/Carousel/Secure Center.jpg",
     },
     {
       letters: ["H", "I", "R", "E"],
-      title: "Hiring Simplified",
+      title: "The World's Largest Skill Assessment Library",
       description: "Connect verified skills with the right opportunities",
       backgroundImage: "/images/homepage/Carousel/Skill Library.jpg",
     },
