@@ -80,7 +80,7 @@ export default function HomePage() {
 
           <div className="max-w-7xl mx-auto px-6 py-8 relative z-10 h-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
-              <div>
+              <div className="mt-20">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">
                   Assessments in Secure Centers
                 </h1>
@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
 
         {/* SkillKwiz Tag - Positioned below the call center image */}
-        <div className="relative md:mt-[45vh]" style={{ zIndex: 3 }}>
+        <div className="relative sm:mt-[5vh] md:mt-[45vh]" style={{ zIndex: 3 }}>
           <div className="bg-[#f6c648] text-[#00418d] py-4 px-6 inline-block transform skew-x-12 -ml-4">
             <div className="transform -skew-x-12">
               <h2 className="text-xl font-bold">
