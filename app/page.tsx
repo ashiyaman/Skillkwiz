@@ -231,7 +231,7 @@ export default function HomePage() {
         <div
           className="
             relative
-            mt-0
+            mt-2vh
             md:mt-[45vh]
           "
           style={{ zIndex: 3 }}
